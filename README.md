@@ -7,7 +7,7 @@ cd GenerateCombinations
 npm instal
 ```
 ## Database
- create .env file
+ Create .env file:
  ```
 PORT = your_app_port
 DB_HOST = your_host
