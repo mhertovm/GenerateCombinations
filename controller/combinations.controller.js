@@ -58,17 +58,17 @@ const generate = async (req, res, next) => {
 
         await db.execute(createItemSql, [length, JSON.stringify(combinationItems)]);
 
-        const combinations = generateCombinations(combinationItems, length)
+        const combination = generateCombinations(combinationItems, length)
 
-        const [resultCombination] = await db.execute(cretaeCombinationSql, [JSON.stringify(combinations)]);
+        const [resultCombination] = await db.execute(cretaeCombinationSql, [JSON.stringify(combination)]);
 
         await db.execute(cretaeResponsSql, [resultCombination.insertId]);
 
         res.status(200).json({
             id: resultCombination.insertId,
-            combination: combinations
+            combination
         })
-        
+
     } catch (error) {
         next(error)
     }
