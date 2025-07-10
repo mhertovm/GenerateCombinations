@@ -3,6 +3,7 @@ async function itemsTable(db) {
         CREATE TABLE IF NOT EXISTS items (
             id INT AUTO_INCREMENT PRIMARY KEY,
             length INT NOT NULL,
+            req_value JSON NOT NULL,
             items_value JSON NOT NULL
         )
     `

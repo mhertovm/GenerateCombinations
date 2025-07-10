@@ -50,13 +50,13 @@ const generate = async (req, res, next) => {
             return res.status(400).json({ message: 'Invalid input' });
         };
 
-        const createItemSql = `INSERT INTO items (length,items_value) VALUES (?,?)`;
+        const createItemSql = `INSERT INTO items (length,req_value,items_value) VALUES (?,?,?)`;
         const cretaeCombinationSql = `INSERT INTO combinations (combinations_value) VALUES (?)`;
         const cretaeResponsSql = `INSERT INTO responses (combination_id) VALUES (?)`;
 
         const combinationItems = createCombinationItems(items)
 
-        await db.execute(createItemSql, [length, JSON.stringify(combinationItems)]);
+        await db.execute(createItemSql, [length, JSON.stringify(items), JSON.stringify(combinationItems)]);
 
         const combination = generateCombinations(combinationItems, length)
 
